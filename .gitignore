@@ -2,4 +2,4 @@
 *.wav
 *.h5
 output_video.mp4
-.txt
+*.txt
