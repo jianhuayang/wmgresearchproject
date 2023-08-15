@@ -6,6 +6,8 @@ Videos with certain hashtags (e.g. #virtualreality) will be downloaded from TikT
 
 This will be done using a combination of text and video analysis pipelines which are implemented using dedicated Python libraries.
 
+Please note that the single video in the downloads folder is merely a placeholder - contact me if you would like the complete dataset of downloaded videos.
+
 Here is a list of the required libraries required for the code to run (not inlcuding their dependencies):
 * PixelLib
 * TensorFlow
