@@ -53,4 +53,4 @@ def main(start_video=1, end_video=5, file_name="keyphrases.txt"):
         keyphrase_extraction(file_name)
 
 if __name__ == "__main__":
-    main(1,2)
+    main()
