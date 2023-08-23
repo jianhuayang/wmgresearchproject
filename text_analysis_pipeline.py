@@ -36,7 +36,7 @@ def keyphrase_extraction():
 
     file_name = "keyphrases.txt"
     with open(file_name,"a") as file:
-        keyphrases_list = [phrase.text for phrase in doc._.phrases if phrase.rank >=0] #Excludes keyphrases that convey no meaning, such as pronouns.
+        keyphrases_list = [phrase.text for phrase in doc._.phrases if phrase.rank >=0] #Excludes stop words (keyphrases that convey no meaning).
         keyphrases = '\n'.join(keyphrases_list) + '\n'
         file.write(keyphrases)
 
