@@ -7,9 +7,6 @@ import spacy
 import pytextrank
 import re
 
-download_path = "./downloads"
-num_videos = sum(1 for element in os.scandir(download_path) if element.is_file())
-
 #Choose which videos from the dataset should be fed into the pipeline.
 start_video = 1
 end_video = 10
