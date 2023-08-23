@@ -33,7 +33,7 @@ def speech_recognition():
         file.write(text)
 
 def keyword_extraction():
-    '''Performs keyword extraction on the transcript using the spaCy model, appending all the keywords to the same text file.'''
+    '''Performs keyword extraction on the transcript using the spaCy model, appending all unique keywords to a text file.'''
     nlp = spacy.load("en_core_web_sm")
     nlp.add_pipe("textrank")
     doc = nlp(Path("transcript.txt").read_text(encoding="utf-8"))
