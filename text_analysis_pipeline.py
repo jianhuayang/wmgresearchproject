@@ -5,7 +5,6 @@ import os
 from pathlib import Path
 import spacy
 import pytextrank
-import re
 
 #Choose which videos from the dataset should be fed into the pipeline.
 start_video = 1
