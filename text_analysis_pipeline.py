@@ -23,11 +23,15 @@ def speech_recognition():
     with sr.AudioFile("audio.wav") as source:
         audio_text = r.record(source)
 
-    text = r.recognize_google(audio_text,language="en-US") #Uses the Google Speech Recognition model.
+    try:
+        text = r.recognize_google(audio_text,language="en-US") #Uses the Google Speech Recognition model.
 
-    file_name = "transcript.txt"
-    with open(file_name, "w") as file:
-        file.write(text)
+        file_name = "transcript.txt"
+        with open(file_name, "w") as file:
+            file.write(text)
+
+    except sr.UnknownValueError:
+        print("Could not transcribe.")
 
 def keyphrase_extraction(file_name):
     '''Performs keyphrase extraction on the transcript using the spaCy model, appending all unique keyphrases to a text file.'''
