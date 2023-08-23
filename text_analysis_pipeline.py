@@ -32,20 +32,20 @@ def speech_recognition():
     with open(file_name, "w") as file:
         file.write(text)
 
-def keyword_extraction():
-    '''Performs keyword extraction on the transcript using the spaCy model, appending all unique keywords to a text file.'''
+def keyphrase_extraction():
+    '''Performs keyphrase extraction on the transcript using the spaCy model, appending all unique keyphrases to a text file.'''
     nlp = spacy.load("en_core_web_sm")
     nlp.add_pipe("textrank")
     doc = nlp(Path("transcript.txt").read_text(encoding="utf-8"))
 
-    file_name = "keywords.txt"
+    file_name = "keyphrases.txt"
     with open(file_name,"a") as file:
-        keywords_list = [phrase.text for phrase in doc._.phrases if phrase.rank >=0] #Excludes keywords that convey no meaning, such as pronouns.
-        keywords = '\n'.join(keywords_list)
-        file.write(keywords)
+        keyphrases_list = [phrase.text for phrase in doc._.phrases if phrase.rank >=0] #Excludes keyphrases that convey no meaning, such as pronouns.
+        keyphrases = '\n'.join(keyphrases_list)
+        file.write(keyphrases)
 
 def main():
-    '''The output of the pipeline is a text file containing all the keywords from the entire subset of specified videos.'''
+    '''The output of the pipeline is a text file containing all the keyphrases from the entire subset of specified videos.'''
     for i in range(start_video,end_video+1):
         #The file path should follow the naming convention of the saved videos.
         file = "video" + str(i)
@@ -53,7 +53,7 @@ def main():
 
         audio_extraction(file_path)
         speech_recognition()
-        keyword_extraction()
+        keyphrase_extraction()
 
 if __name__ == "__main__":
     main()
