@@ -3,7 +3,7 @@ import text_analysis_pipeline as tap
 import re
 
 def main():
-    '''Identifies the keyphrases that occur most frequently in keyphrases.txt, excluding stop words. '''
+    '''Identifies the keyphrases that occur most frequently in keyphrases.txt, excluding stop words. The results are written to a text file. '''
     tap.main()
 
     frequency = {}
@@ -25,8 +25,11 @@ def main():
     most_frequent = dict(sorted(frequency.items(), key=lambda elem: elem[1], reverse=True))
     most_frequent_count = most_frequent.keys()
     
-    for words in most_frequent_count:
-        print(words, most_frequent[words])
+    file_name = "frequency_analysis.txt"
+    with open(file_name,"w") as file:
+        keywords_list = [(word,most_frequent[word]) for word in most_frequent_count]
+        keywords = '\n'.join(' '.join(map(str, tpl)) for tpl in keywords_list)
+        file.write(keywords)
 
 if __name__ == "__main__":
     main()
