@@ -9,7 +9,11 @@ import pytextrank
 dir_path = "./downloads"
 num_videos = sum(1 for element in os.scandir(dir_path) if element.is_file())
 
-for i in range(1,num_videos+1):
+#Choose which videos from the dataset should be fed into the pipeline.
+start_video = 1
+end_video = 2
+
+for i in range(start_video,end_video+1):
     file = "video" + str(i)
     file_path = f"./downloads/{file}.mp4"
     
