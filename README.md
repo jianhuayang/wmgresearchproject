@@ -1,23 +1,19 @@
-This repository will contain all code relevant to my WMG Research Project.
+**This repository contains the code and files pertaining to my WMG Research Project.**
 
-The aim of the project is to investigate how VR content on TikTok can be used for educational purposes.
+The overall aim of the project was to investigate what VR content on TikTok can be used for educational purposes.
 
-Videos with certain hashtags (e.g. #virtualreality) will be downloaded from TikTok and analysed for their relevant content. 
+Using specific search terms (e.g. *virtual reality learning*), relevant videos were downloaded from TikTok.
 
-This will be done using a combination of text and video analysis pipelines which are implemented using dedicated Python libraries.
+Their content was categorised and a text analysis pipeline was implemented using dedicated Python libraries.
+* The speech in the video was transcribed and saved in a text file.
+* The most important words were identified using keyword extraction.
 
-Please note that the single video in the downloads folder is merely a placeholder - contact me if you would like the complete dataset of downloaded videos.
+Note that the video in the downloads folder is simply a placeholder - please contact me (**samaksh.agarwal@warwick.ac.uk**) if you would like the complete dataset.
 
-Here is a list of the required libraries required for the code to run (not inlcuding their dependencies):
-* PixelLib
+Here is a list of the required libraries required for the code to run:
 * TensorFlow
-* OpenCV
-* spaCy
-* pydub
 * speech_recognition
+* pydub (*FFmpeg also required*)
+* spaCy
 
-FFmpeg can be downloaded here: https://ffmpeg.org/download.html (required for pydub).
-
-The training model for PixelLib can be downloaded here: https://github.com/matterport/Mask_RCNN/releases/download/v2.0/mask_rcnn_coco.h5
-
-
+FFmpeg can be downloaded here: https://ffmpeg.org/download.html
