@@ -6,10 +6,6 @@ from pathlib import Path
 import spacy
 import pytextrank
 
-#Choose which videos from the dataset should be fed into the pipeline.
-start_video = 1
-end_video = 10
-
 def clear_file(file_name):
     '''Clear the text file.'''
     with open(file_name,'w') as file:
@@ -44,7 +40,7 @@ def keyphrase_extraction(file_name):
         keyphrases = '\n'.join(keyphrases_list) + '\n'
         file.write(keyphrases)
 
-def main(file_name="keyphrases.txt"):
+def main(start_video=1, end_video=5, file_name="keyphrases.txt"):
     '''The output of the pipeline is a text file containing all the keyphrases from the entire subset of specified videos.'''
     clear_file(file_name)
     for i in range(start_video,end_video+1):
@@ -57,4 +53,4 @@ def main(file_name="keyphrases.txt"):
         keyphrase_extraction(file_name)
 
 if __name__ == "__main__":
-    main()
+    main(1,2)
