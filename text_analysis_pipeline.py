@@ -41,6 +41,11 @@ for i in range(start_video,end_video+1):
     nlp = spacy.load("en_core_web_sm")
     nlp.add_pipe("textrank")
     doc = nlp(Path("transcript.txt").read_text(encoding="utf-8"))
-    
-    for phrase in doc._.phrases:
-        print(phrase.text, phrase.rank, phrase.count) #A higher rank value means the phrase is more relevant.
+
+    #Save the keywords from each video to a single text file.
+    file_name = "keywords.txt"
+
+    with open(file_name,"a") as file:
+        keywords = [phrase.text for phrase in doc._.phrases if phrase.rank >=0] #Excludes individual words that convey no meaning, such as pronouns.
+        keyword_string = '\n'.join(keywords)
+        file.write(keyword_string)
