@@ -4,7 +4,6 @@ from pydub import AudioSegment
 import os
 from pathlib import Path
 import spacy
-import pytextrank
 
 def clear_file(file_name):
     '''Clear the text file.'''
@@ -36,12 +35,11 @@ def speech_recognition():
 def keyphrase_extraction(file_name):
     '''Performs keyphrase extraction on the transcript using the spaCy model, appending all unique keyphrases to a text file.'''
     nlp = spacy.load("en_core_web_sm")
-    nlp.add_pipe("textrank")
     doc = nlp(Path("transcript.txt").read_text(encoding="utf-8"))
-
+    filtered_text = [token.text for token in doc if not token.is_stop]
+    
     with open(file_name,"a") as file:
-        keyphrases_list = [phrase.text for phrase in doc._.phrases if phrase.rank >=0] #Excludes stop words (keyphrases that convey no meaning).
-        keyphrases = '\n'.join(keyphrases_list) + '\n'
+        keyphrases = '\n'.join(filtered_text) + '\n'
         file.write(keyphrases)
 
 def main(start_video=1, end_video=5, file_name="keyphrases.txt"):
@@ -57,4 +55,4 @@ def main(start_video=1, end_video=5, file_name="keyphrases.txt"):
         keyphrase_extraction(file_name)
 
 if __name__ == "__main__":
-    main()
+    main(1,1)
