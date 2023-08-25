@@ -36,7 +36,7 @@ def keyphrase_extraction(file_name):
     '''Performs keyphrase extraction on the transcript using the spaCy model, appending all unique keyphrases to a text file.'''
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(Path("transcript.txt").read_text(encoding="utf-8"))
-    filtered_text = [token.text for token in doc if not token.is_stop]
+    filtered_text = [token.text.lower() for token in doc if not token.is_stop]
     
     with open(file_name,"a") as file:
         keyphrases = '\n'.join(filtered_text) + '\n'
