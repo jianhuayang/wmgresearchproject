@@ -4,6 +4,7 @@ from pydub import AudioSegment
 import os
 from pathlib import Path
 import spacy
+import yake
 
 def clear_file(file_name):
     '''Clear the text file.'''
@@ -37,6 +38,8 @@ def keyphrase_extraction(file_name):
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(Path("transcript.txt").read_text(encoding="utf-8"))
     filtered_text = [token.text.lower() for token in doc if not token.is_stop]
+
+    kw_extractor = yake.KeywordExtractor()
     
     with open(file_name,"a") as file:
         keyphrases = '\n'.join(filtered_text) + '\n'
