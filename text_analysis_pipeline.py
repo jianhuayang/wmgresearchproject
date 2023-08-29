@@ -23,7 +23,7 @@ def speech_recognition():
         audio_text = r.record(source)
 
     try:
-        text = r.recognize_google(audio_text,language="en-US") #Uses the Google Speech Recognition model.
+        text = r.recognize_google(audio_text,language="en-US") #Google Speech Recognition model.
 
         file_name = "transcript.txt"
         with open(file_name, "w") as file:
@@ -33,12 +33,13 @@ def speech_recognition():
         print("Could not transcribe.")
 
 def keyword_extraction(file_name):
-    '''Performs keyword extraction on the transcript using the YAKE method. All keywords are appended to a text file.'''
+    '''Performs keyword extraction on the repunctuated transcript using the YAKE method. All keywords are appended to a text file.'''
     with open("transcript.txt", "r") as file:
         words = file.read().split()
 
     words_string = " ".join(words)
 
+    #Restore punctuation to the transcript to improve keyword extraction accuracy.
     rpunct = RestorePuncts()
     punctuated_string = rpunct.punctuate(words_string)
 
@@ -50,7 +51,7 @@ def keyword_extraction(file_name):
             file.write(kw[0].lower() + "\n")
 
 def main(start_video=1, end_video=5, file_name="keywords.txt"):
-    '''The output of the pipeline is a text file containing all the keyphrases from the entire subset of specified videos.'''
+    '''The output of the pipeline is a text file containing all the keywords from the entire subset of specified videos.'''
     clear_file(file_name)
     for i in range(start_video,end_video+1):
         #The file path should follow the naming convention of the saved videos.
