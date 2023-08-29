@@ -2,7 +2,6 @@
 from pathlib import Path
 from pydub import AudioSegment
 import speech_recognition as sr
-import spacy
 import yake
 
 def clear_file(file_name):
@@ -34,7 +33,6 @@ def speech_recognition():
 
 def keyphrase_extraction(file_name):
     '''Performs keyphrase extraction on the transcript using the spaCy model, appending all unique keyphrases to a text file.'''
-
     with open("transcript.txt", "r") as file:
         words = file.read().split()
 
