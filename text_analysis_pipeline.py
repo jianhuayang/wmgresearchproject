@@ -35,7 +35,10 @@ def speech_recognition():
         print("Could not transcribe.")
 
 def keyword_extraction():
-    '''Performs keyword extraction on the repunctuated transcript using the YAKE method. All keywords are appended to a text file.'''
+    '''
+    Performs keyword extraction on the repunctuated transcript using the YAKE method. 
+    Unique keywords are stored in a dictionary along with their cumulative frequency count.
+    '''
     with open("transcript.txt", "r") as file:
         words = file.read().split()
 
@@ -53,7 +56,10 @@ def keyword_extraction():
         cumulative_kw_frequency[kw] = cumulative_kw_frequency.get(kw, 0) + 1
 
 def main(start_video=1, end_video=5, file_name="keywords.txt"):
-    '''The output of the pipeline is a text file containing all the keywords from the entire subset of specified videos.'''
+    '''
+    The output of the pipeline is a text file containing all unique keywords 
+    and their cumulative frequency count across the entire subset of specified videos.
+    '''
     clear_file(file_name)
 
     for i in range(start_video,end_video+1):
