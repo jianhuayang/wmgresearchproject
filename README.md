@@ -11,9 +11,9 @@ Their content was categorised and a text analysis pipeline was implemented using
 Note that the video in the downloads folder is simply a placeholder - please contact me (**samaksh.agarwal@warwick.ac.uk**) if you would like the complete dataset.
 
 Here is a list of the required libraries required for the code to run:
-* TensorFlow
-* speech_recognition
 * pydub (*FFmpeg also required*)
+* speech_recognition
 * spaCy
+* yake
 
 FFmpeg can be downloaded here: https://ffmpeg.org/download.html
