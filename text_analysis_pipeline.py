@@ -34,14 +34,16 @@ def speech_recognition():
 
 def keyphrase_extraction(file_name):
     '''Performs keyphrase extraction on the transcript using the spaCy model, appending all unique keyphrases to a text file.'''
-    nlp = spacy.load("en_core_web_sm")
-    doc = nlp(Path("transcript.txt").read_text(encoding="utf-8"))
-    filtered_text = [token.text.lower() for token in doc if not token.is_stop]
+
+    with open("transcript.txt", "r") as file:
+        words = file.read().split()
+
+    words_string = "".join(word for word in words) + " "
 
     kw_extractor = yake.KeywordExtractor()
     
     with open(file_name,"a") as file:
-        keyphrases = '\n'.join(filtered_text) + '\n'
+        keyphrases = '\n'.join(words_string) + '\n'
         file.write(keyphrases)
 
 def main(start_video=1, end_video=5, file_name="keyphrases.txt"):
