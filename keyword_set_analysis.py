@@ -16,8 +16,15 @@ def main(file1_name,file2_name):
             keyword = " ".join(words[:-1])
             keywords2_set.add(keyword)
 
-    print(keywords_set.intersection(keywords2_set))
-    print(keywords_set.difference(keywords2_set))
+    intersection = keywords_set.intersection(keywords2_set)
+    with open("intersection.txt", "w") as file:
+        for kw in intersection:
+            file.write(kw + "\n")
+
+    difference = keywords_set.difference(keywords2_set)
+    with open("difference.txt", "w") as file:
+        for kw in difference:
+            file.write(kw + "\n")
 
 if __name__ == "__main__":
     tap.main(1,3)
