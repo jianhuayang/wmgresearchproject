@@ -1,8 +1,7 @@
 #Import all the required libraries.
-import speech_recognition as sr
-from pydub import AudioSegment
-import os
 from pathlib import Path
+from pydub import AudioSegment
+import speech_recognition as sr
 import spacy
 import yake
 
