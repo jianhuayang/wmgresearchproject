@@ -36,13 +36,14 @@ def keyword_extraction(file_name):
     with open("transcript.txt", "r") as file:
         words = file.read().split()
 
-    words_string = "".join(word for word in words) + " "
+    words_string = " ".join(words)
 
-    kw_extractor = yake.KeywordExtractor()
+    kw_extractor = yake.KeywordExtractor(lan="en",n=2,dedupLim=0.6)
+    keywords = kw_extractor.extract_keywords(words_string)
     
     with open(file_name,"a") as file:
-        keywords = '\n'.join(words_string) + '\n'
-        file.write(keywords)
+        for kw in keywords:
+            file.write(kw[0] + "\n")
 
 def main(start_video=1, end_video=5, file_name="keywords.txt"):
     '''The output of the pipeline is a text file containing all the keyphrases from the entire subset of specified videos.'''
