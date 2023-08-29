@@ -31,8 +31,8 @@ def speech_recognition():
     except sr.UnknownValueError:
         print("Could not transcribe.")
 
-def keyphrase_extraction(file_name):
-    '''Performs keyphrase extraction on the transcript using the spaCy model, appending all unique keyphrases to a text file.'''
+def keyword_extraction(file_name):
+    '''Performs keyword extraction on the transcript using the YAKE method. All keywords are appended to a text file.'''
     with open("transcript.txt", "r") as file:
         words = file.read().split()
 
@@ -41,10 +41,10 @@ def keyphrase_extraction(file_name):
     kw_extractor = yake.KeywordExtractor()
     
     with open(file_name,"a") as file:
-        keyphrases = '\n'.join(words_string) + '\n'
-        file.write(keyphrases)
+        keywords = '\n'.join(words_string) + '\n'
+        file.write(keywords)
 
-def main(start_video=1, end_video=5, file_name="keyphrases.txt"):
+def main(start_video=1, end_video=5, file_name="keywords.txt"):
     '''The output of the pipeline is a text file containing all the keyphrases from the entire subset of specified videos.'''
     clear_file(file_name)
     for i in range(start_video,end_video+1):
@@ -54,7 +54,7 @@ def main(start_video=1, end_video=5, file_name="keyphrases.txt"):
 
         audio_extraction(file_path)
         speech_recognition()
-        keyphrase_extraction(file_name)
+        keyword_extraction(file_name)
 
 if __name__ == "__main__":
     main(1,1)
