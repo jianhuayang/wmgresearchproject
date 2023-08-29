@@ -47,7 +47,7 @@ def keyword_extraction(file_name):
     
     with open(file_name,"a") as file:
         for kw in keywords:
-            file.write(kw[0] + "\n")
+            file.write(kw[0].lower() + "\n")
 
 def main(start_video=1, end_video=5, file_name="keywords.txt"):
     '''The output of the pipeline is a text file containing all the keyphrases from the entire subset of specified videos.'''
