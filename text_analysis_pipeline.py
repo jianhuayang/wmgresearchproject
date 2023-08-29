@@ -33,6 +33,8 @@ def speech_recognition():
 
     except sr.UnknownValueError:
         print("Could not transcribe.")
+        file_name = "transcript.txt"
+        with open(file_name, "w"): pass
 
 def keyword_extraction():
     '''
@@ -44,9 +46,13 @@ def keyword_extraction():
 
     words_string = " ".join(words)
 
-    #Restore punctuation to the transcript to improve keyword extraction accuracy.
-    rpunct = RestorePuncts()
-    punctuated_string = rpunct.punctuate(words_string)
+    try:
+        #Restore punctuation to the transcript to improve keyword extraction accuracy.
+        rpunct = RestorePuncts()
+        punctuated_string = rpunct.punctuate(words_string)
+
+    except:
+        punctuated_string = words_string
 
     kw_extractor = yake.KeywordExtractor(lan="en",n=2,dedupLim=0.6)
     keywords = kw_extractor.extract_keywords(punctuated_string)
@@ -76,4 +82,4 @@ def main(start_video=1, end_video=5, file_name="keywords.txt"):
             file.write(f"{kw} {cumulative_kw_frequency[kw]}\n")
 
 if __name__ == "__main__":
-    main()
+    main(39,39)
