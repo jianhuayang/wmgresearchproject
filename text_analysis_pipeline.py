@@ -3,6 +3,7 @@ from pathlib import Path
 from pydub import AudioSegment
 import speech_recognition as sr
 import yake
+from rpunct import RestorePuncts
 
 def clear_file(file_name):
     '''Clear the text file.'''
@@ -38,8 +39,11 @@ def keyword_extraction(file_name):
 
     words_string = " ".join(words)
 
+    rpunct = RestorePuncts()
+    punctuated_string = rpunct.punctuate(words_string)
+
     kw_extractor = yake.KeywordExtractor(lan="en",n=2,dedupLim=0.6)
-    keywords = kw_extractor.extract_keywords(words_string)
+    keywords = kw_extractor.extract_keywords(punctuated_string)
     
     with open(file_name,"a") as file:
         for kw in keywords:
