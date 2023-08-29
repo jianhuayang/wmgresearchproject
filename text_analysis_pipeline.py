@@ -5,8 +5,6 @@ import speech_recognition as sr
 import yake
 from rpunct import RestorePuncts
 
-cumulative_kw_frequency = {}
-
 def clear_file(file_name):
     '''Clear the text file.'''
     with open(file_name,'w') as file:
@@ -36,7 +34,7 @@ def speech_recognition():
         file_name = "transcript.txt"
         with open(file_name, "w"): pass
 
-def keyword_extraction():
+def keyword_extraction(kw_dict):
     '''
     Performs keyword extraction on the repunctuated transcript using the YAKE method. 
     Unique keywords are stored in a dictionary along with their cumulative frequency count.
@@ -59,7 +57,7 @@ def keyword_extraction():
 
     for kw, _ in keywords:
         kw = kw.lower()
-        cumulative_kw_frequency[kw] = cumulative_kw_frequency.get(kw, 0) + 1
+        kw_dict[kw] = kw_dict.get(kw, 0) + 1
 
 def main(start_video=1, end_video=5, file_name="keywords.txt"):
     '''
@@ -67,6 +65,7 @@ def main(start_video=1, end_video=5, file_name="keywords.txt"):
     and their cumulative frequency count across the entire subset of specified videos.
     '''
     clear_file(file_name)
+    cumulative_kw_frequency = {}
 
     for i in range(start_video,end_video+1):
         #The file path should follow the naming convention of the saved videos.
@@ -75,7 +74,7 @@ def main(start_video=1, end_video=5, file_name="keywords.txt"):
 
         audio_extraction(file_path)
         speech_recognition()
-        keyword_extraction()
+        keyword_extraction(cumulative_kw_frequency)
 
     with open(file_name,"a") as file:
         for kw in cumulative_kw_frequency.keys():
