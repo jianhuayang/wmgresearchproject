@@ -5,6 +5,8 @@ import speech_recognition as sr
 import yake
 from rpunct import RestorePuncts
 
+cumulative_kw_frequency = {}
+
 def clear_file(file_name):
     '''Clear the text file.'''
     with open(file_name,'w') as file:
@@ -32,7 +34,7 @@ def speech_recognition():
     except sr.UnknownValueError:
         print("Could not transcribe.")
 
-def keyword_extraction(file_name):
+def keyword_extraction():
     '''Performs keyword extraction on the repunctuated transcript using the YAKE method. All keywords are appended to a text file.'''
     with open("transcript.txt", "r") as file:
         words = file.read().split()
@@ -45,14 +47,15 @@ def keyword_extraction(file_name):
 
     kw_extractor = yake.KeywordExtractor(lan="en",n=2,dedupLim=0.6)
     keywords = kw_extractor.extract_keywords(punctuated_string)
-    
-    with open(file_name,"a") as file:
-        for kw in keywords:
-            file.write(kw[0].lower() + "\n")
+
+    for kw, _ in keywords:
+        kw = kw.lower()
+        cumulative_kw_frequency[kw] = cumulative_kw_frequency.get(kw, 0) + 1
 
 def main(start_video=1, end_video=5, file_name="keywords.txt"):
     '''The output of the pipeline is a text file containing all the keywords from the entire subset of specified videos.'''
     clear_file(file_name)
+
     for i in range(start_video,end_video+1):
         #The file path should follow the naming convention of the saved videos.
         file = "video" + str(i)
@@ -60,7 +63,11 @@ def main(start_video=1, end_video=5, file_name="keywords.txt"):
 
         audio_extraction(file_path)
         speech_recognition()
-        keyword_extraction(file_name)
+        keyword_extraction()
+
+    with open(file_name,"a") as file:
+        for kw in cumulative_kw_frequency.keys():
+            file.write(f"{kw} {cumulative_kw_frequency[kw]}\n")
 
 if __name__ == "__main__":
-    main(1,1)
+    main()
