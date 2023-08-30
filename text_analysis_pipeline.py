@@ -16,7 +16,7 @@ def audio_extraction(file_path):
     audio = video.set_channels(1).set_frame_rate(16000).set_sample_width(2) 
     audio.export("audio.wav", format="wav")
 
-def speech_recognition():
+def speech_recognition(full_transcript):
     '''Loads the audio file and extracts the speech from it, writing the transcript to a text file.'''
     r = sr.Recognizer()
     with sr.AudioFile("audio.wav") as source:
@@ -28,6 +28,9 @@ def speech_recognition():
         file_name = "transcript.txt"
         with open(file_name, "w") as file:
             file.write(text)
+
+        with open(full_transcript,"a") as file:
+            file.write(text + " ")
 
     except sr.UnknownValueError:
         print("Could not transcribe.")
@@ -59,12 +62,13 @@ def keyword_extraction(kw_dict):
         kw = kw.lower()
         kw_dict[kw] = kw_dict.get(kw, 0) + 1
 
-def main(start_video=1, end_video=5, file_name="keywords.txt"):
+def main(start_video=1, end_video=5, file_name="keywords.txt", full_transcript="full_transcript.txt"):
     '''
     The output of the pipeline is a text file containing all unique keywords 
     and their cumulative frequency count across the entire subset of specified videos.
     '''
     clear_file(file_name)
+    clear_file(full_transcript)
     cumulative_kw_frequency = {}
 
     for i in range(start_video,end_video+1):
@@ -73,7 +77,7 @@ def main(start_video=1, end_video=5, file_name="keywords.txt"):
         file_path = f"./downloads/{file}.mp4"
 
         audio_extraction(file_path)
-        speech_recognition()
+        speech_recognition(full_transcript)
         keyword_extraction(cumulative_kw_frequency)
 
     with open(file_name,"a") as file:
@@ -81,4 +85,4 @@ def main(start_video=1, end_video=5, file_name="keywords.txt"):
             file.write(f"{kw} {cumulative_kw_frequency[kw]}\n")
 
 if __name__ == "__main__":
-    main(39,39)
+    main()
