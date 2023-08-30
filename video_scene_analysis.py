@@ -27,10 +27,10 @@ def main(start_video=1, end_video=10):
         avg_scene_length = round(total_length/num_scenes, 2)
         avg_scene_length_list.append(avg_scene_length)
     
-    df = pd.read_csv("video_data.csv")
+    df = pd.read_csv("video_data.csv", index_col=0)
     df["Number of Scenes"] = num_scenes_list
     df["Average Scene Length"] = avg_scene_length_list
-    df.to_csv("video_data.csv")
+    df.to_csv("video_data.csv", index=False)
 
 if __name__ == "__main__":
     main(1,40)
