@@ -1,13 +1,13 @@
 Video,Likes,Shares,Comments,Content Overview,Subtitles,Video Style,Number of Scenes,Average Scene Length
-1,453 900,6411,4310,Language Learning Game,Yes,1,7,4.05
-2,315 300,3310,3001,Language Learning Game,Yes,1,5,5.28
-3,68 700,629,828,Medical Simulator,Yes,2,6,1.6
-4,63 700,9261,654,Language Learning Game,Yes,1,5,5.18
-5,22 006,818,546,Sports Game (Football),No,2,13,2.34
-6,18 800,429,279,Train Driving Simulator,Yes,1,33,2.4
+1,453900,6411,4310,Language Learning Game,Yes,1,7,4.05
+2,315300,3310,3001,Language Learning Game,Yes,1,5,5.28
+3,68700,629,828,Medical Simulator,Yes,2,6,1.6
+4,63700,9261,654,Language Learning Game,Yes,1,5,5.18
+5,22006,818,546,Sports Game (Football),No,2,13,2.34
+6,18800,429,279,Train Driving Simulator,Yes,1,33,2.4
 7,9970,61,634,Ocean Exploration Software,Yes,2,20,0.93
 8,9621,53,220,Sports Game (Boxing),Yes,2,1,8.99
-9,6733,131,129,Sports Game (Football),No,2,11,2.0
+9,6733,131,129,Sports Game (Football),No,2,11,2
 10,4536,44,157,Cooking Game,Yes,2,8,1.63
 11,4318,14,120,Language Learning Game,Yes,1,4,4.6
 12,4052,68,32,Medical Simulator,,2,2,1.68
@@ -37,5 +37,5 @@ Video,Likes,Shares,Comments,Content Overview,Subtitles,Video Style,Number of Sce
 36,222,8,5,VR Discussion,Yes,4,14,5.3
 37,186,6,11,Sports Game (Baseball),No,3,8,1.5
 38,178,8,13,Cooking Game,,1,12,1.67
-39,143,10,9,VR Discussion,,4,1,15.0
+39,143,10,9,VR Discussion,,4,1,15
 40,137,1,7,Car Crash Simulator,No,2,5,3.21
