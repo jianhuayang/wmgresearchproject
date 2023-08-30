@@ -30,7 +30,7 @@ def speech_recognition(full_transcript):
             file.write(text)
 
         with open(full_transcript,"a") as file:
-            file.write(text + " ")
+            file.write(text.lower() + " ")
 
     except sr.UnknownValueError:
         print("Could not transcribe.")
