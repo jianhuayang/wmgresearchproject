@@ -27,6 +27,6 @@ def main(file1_name,file2_name):
             file.write(kw + "\n")
 
 if __name__ == "__main__":
-    tap.main(1,3)
-    tap.main(4,7,"keywords2.txt")
+    tap.main(1,10)
+    tap.main(10,20,"keywords2.txt","full_transcript2.txt")
     main("keywords.txt", "keywords2.txt")
