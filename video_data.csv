@@ -12,7 +12,7 @@ Video,Likes,Shares,Comments,Content Overview,Subtitles,Video Style,Number of Sce
 11,4318,14,120,Language Learning Game,Yes,1,4,4.6
 12,4052,68,32,Medical Simulator,,2,2,1.68
 13,3588,20,76,Sports Game (Cricket),No,1,1,12.37
-14,3245,60,60,Welding Simulation Software,Yes,3,8,3.27
+14,3245,60,60,Welding Simulator,Yes,3,8,3.27
 15,2702,38,12,Musical Game,Yes,3,20,4.5
 16,2481,136,21,Art Design Software,,2,13,4.62
 17,2340,376,255,Public Speaking Simulator,Yes ,3,18,3.84
@@ -21,10 +21,10 @@ Video,Likes,Shares,Comments,Content Overview,Subtitles,Video Style,Number of Sce
 20,1470,3,8,Medical Simulator,Yes,2,1,8.97
 21,1393,108,71,Firearm Training Simulator,No,2,3,19.63
 22,1223,10,35,Language Learning Game,Yes,1,8,3.1
-23,1154,16,45,Driving Simulation Game,No,1,3,18.84
+23,1154,16,45,Driving Simulator,No,1,3,18.84
 24,1115,8,20,Art Design Software,Yes,2,3,15.44
 25,1083,11,23,Musical Game,Yes,2,5,1.66
-26,749,6,35,Science Learning Game,Yes,1,9,2.72
+26,749,6,35,Science Game,Yes,1,9,2.72
 27,708,9,21,Sports Game (Basketball),Yes,2,6,9.01
 28,550,0,9,Musical Game,,2,10,1.85
 29,530,16,17,Driving Simulator,,2,5,5.9
