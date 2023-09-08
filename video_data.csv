@@ -5,7 +5,7 @@ Video,Likes,Shares,Comments,Content Overview,Subtitles,Video Style,Number of Sce
 4,63700,9261,654,Language Learning Game,Yes,1,5,5.18
 5,22006,818,546,Sports Game (Football),No,2,13,2.34
 6,18800,429,279,Train Driving Simulator,Yes,1,33,2.4
-7,9970,61,634,Ocean Exploration Software,Yes,2,20,0.93
+7,9970,61,634,Ocean Exploration Simulator,Yes,2,20,0.93
 8,9621,53,220,Sports Game (Boxing),Yes,2,1,8.99
 9,6733,131,129,Sports Game (Football),No,2,11,2
 10,4536,44,157,Cooking Game,Yes,2,8,1.63
@@ -15,7 +15,7 @@ Video,Likes,Shares,Comments,Content Overview,Subtitles,Video Style,Number of Sce
 14,3245,60,60,Welding Simulation Software,Yes,3,8,3.27
 15,2702,38,12,Musical Game,Yes,3,20,4.5
 16,2481,136,21,Art Design Software,,2,13,4.62
-17,2340,376,255,Public Speaking Training Software,Yes ,3,18,3.84
+17,2340,376,255,Public Speaking Simulator,Yes ,3,18,3.84
 18,1607,3,50,Musical Game,No,1,31,1.13
 19,1538,38,23,Language Learning Game,Yes,1,11,2.36
 20,1470,3,8,Medical Simulator,Yes,2,1,8.97
@@ -27,15 +27,15 @@ Video,Likes,Shares,Comments,Content Overview,Subtitles,Video Style,Number of Sce
 26,749,6,35,Science Learning Game,Yes,1,9,2.72
 27,708,9,21,Sports Game (Basketball),Yes,2,6,9.01
 28,550,0,9,Musical Game,,2,10,1.85
-29,530,16,17,Driving Simulation Game,,2,5,5.9
-30,350,32,15,VR Discussion,,2,6,5.01
-31,286,8,12,VR Discussion,Yes,3,22,3.56
-32,275,3,12,VR Discussion,Yes,2,8,2.69
+29,530,16,17,Driving Simulator,,2,5,5.9
+30,350,32,15,Discussion,,2,6,5.01
+31,286,8,12,Discussion,Yes,3,22,3.56
+32,275,3,12,Discussion,Yes,2,8,2.69
 33,244,2,22,Language Learning Game,No,1,31,2.06
 34,236,14,6,Medical Simulator,Yes,3,2,8.88
 35,224,23,44,Language Learning Game,Yes,1,6,3.07
-36,222,8,5,VR Discussion,Yes,4,14,5.3
+36,222,8,5,Discussion,Yes,4,14,5.3
 37,186,6,11,Sports Game (Baseball),No,3,8,1.5
 38,178,8,13,Cooking Game,,1,12,1.67
-39,143,10,9,VR Discussion,,4,1,15
+39,143,10,9,Discussion,,4,1,15
 40,137,1,7,Car Crash Simulator,No,2,5,3.21
