@@ -7,7 +7,6 @@ df = pd.read_csv("video_data.csv")
 #Initialise each different plot.
 fig, axs = plt.subplots(1, 2)
 fig2, axs2 = plt.subplots()
-fig3, axs3 = plt.subplots()
 
 #Content Type Data Visualisation
 content_types = ["Game", "Simulator", "Discussion", "Software"]
@@ -40,6 +39,11 @@ for type in content_types:
     #Create a bar chart for the number of videos per game type.
     axs2.bar(grouped_game_df["Content Overview"], grouped_game_df["Video"])
 
+#Video Style Visualisation
+style_df = df.groupby(["Video Style", "Subtitles"]).size().unstack().reset_index()
+style_df = style_df[style_df.columns[::-1]]
+style_df = style_df.drop(columns="Video Style")
+fig3 = style_df.plot(kind="bar", stacked=True)
 
 #Format the labels and axes for each plot.
 axs[0].set_xlabel("Content Type")
@@ -47,14 +51,14 @@ axs[0].set_ylabel("Number of Videos")
 axs[0].set_title("Number of Videos per Content Type")
 axs[0].set_xticks(list(content_type_mapping.values()))
 axs[0].set_xticklabels(["Game", "Simulator", "Discussion", "Miscellaneous\nSoftware"])
-axs[0].set_yticks(range(0,25,5))
+axs[0].set_yticks(range(0,30,5))
 
 axs[1].set_xlabel("Content Type")
 axs[1].set_ylabel("Total Likes")
 axs[1].set_title("Total Likes per Content Type")
 axs[1].set_xticks(list(content_type_mapping.values()))
 axs[1].set_xticklabels(["Game", "Simulator", "Discussion", "Miscellaneous\nSoftware"])
-axs[1].set_yticks(range(0,900000,100000))
+axs[1].set_yticks(range(0,1000000,100000))
 
 axs2.set_xlabel("Game Type")
 axs2.set_ylabel("Number of Videos")
@@ -62,19 +66,13 @@ axs2.set_title("Number of Videos per Game Type")
 axs2.set_xticks(range(5))
 axs2.set_xticklabels(["Cooking", "Language", "Music", "Science", "Sports"])
 
+fig3.set_xlabel("Video Style")
+fig3.set_ylabel("Number of Videos")
+fig3.set_title("Number of Videos per Video Style")
+fig3.set_xticks(range(4))
+fig3.set_xticklabels(range(1,5))
+fig3.set_yticks(range(0,22,2))
+fig3.legend(title="Subtitles", labels=["With Subtitles", "Without Subtitles", "No Speech"])
+
 # Display the subplots
 plt.show()
-
-""" 
-likes_per_style = df.groupby("Video Style")["Likes"].sum().reset_index()
-plt.bar(likes_per_style["Video Style"], likes_per_style["Likes"])   
-
-plt.xlabel("Video Style")
-plt.ylabel("Total Likes")
-plt.title("Total Likes per Video Style")
-
-plt.xticks(range(0,5,1))
-plt.yticks(range(0,1000000,100000))
-
-plt.show()
- """
