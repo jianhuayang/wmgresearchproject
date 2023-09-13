@@ -52,7 +52,7 @@ def keyword_extraction(kw_dict):
     except:
         punctuated_string = words_string
 
-    kw_extractor = yake.KeywordExtractor(lan="en",n=2,dedupLim=0.4)
+    kw_extractor = yake.KeywordExtractor(lan="en",n=2,dedupLim=0.5)
     keywords = kw_extractor.extract_keywords(punctuated_string)
 
     #Record the cumulative frequency of each keyword.
