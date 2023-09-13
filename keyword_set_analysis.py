@@ -1,8 +1,6 @@
-import text_analysis_pipeline as tap
-
 def main(file1_name,file2_name):
-    keywords_set = set()
-    keywords2_set = set()
+    keywords_set = set() #The more popular set.
+    keywords2_set = set() #The less popular set.
 
     with open(file1_name, "r") as file:
         for line in file:
@@ -16,17 +14,11 @@ def main(file1_name,file2_name):
             keyword = " ".join(words[:-1])
             keywords2_set.add(keyword)
 
-    intersection = keywords_set.intersection(keywords2_set)
-    with open("intersection.txt", "w") as file:
-        for kw in intersection:
-            file.write(kw + "\n")
-
+    #Identify common keywords that only appear in the more popular set.
     difference = keywords_set.difference(keywords2_set)
     with open("difference.txt", "w") as file:
         for kw in difference:
             file.write(kw + "\n")
 
 if __name__ == "__main__":
-    tap.main(1,20)
-    tap.main(21,40,"keywords2.txt","full_transcript2.txt")
     main("keywords.txt", "keywords2.txt")
