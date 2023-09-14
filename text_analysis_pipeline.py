@@ -32,7 +32,7 @@ def speech_recognition():
     except sr.UnknownValueError:
         print("Could not transcribe.")
         file_name = "transcript.txt"
-        clear_file(file_name) #Ensure the transcript is cleared even if there is no speech.
+        clear_file(file_name) #Ensure that the previous video's transcript is cleared if the current video has no speech.
 
 def keyword_extraction(kw_dict):
     '''
@@ -44,18 +44,19 @@ def keyword_extraction(kw_dict):
 
     words_string = " ".join(words)
 
+    #Restore punctuation to the transcript to improve the accuracy of keyword extraction.
     try:
-        #Restore punctuation to the transcript to improve keyword extraction accuracy.
         rpunct = RestorePuncts()
         punctuated_string = rpunct.punctuate(words_string)
 
     except:
         punctuated_string = words_string
 
+    #Extract the keywords from the transcript. A keyword can be either 1 or 2 words long.
     kw_extractor = yake.KeywordExtractor(lan="en",n=2,dedupLim=0.5)
     keywords = kw_extractor.extract_keywords(punctuated_string)
 
-    #Record the cumulative frequency of each keyword.
+    #Increment the cumulative frequency of each keyword.
     for kw, _ in keywords:
         kw = kw.lower()
         kw_dict[kw] = kw_dict.get(kw, 0) + 1
@@ -68,6 +69,7 @@ def main(start_video=1, end_video=40, file_name="keywords.txt"):
     clear_file(file_name)
     cumulative_kw_frequency = {}
 
+    #Loop through all the videos in the dataset.
     for i in range(start_video,end_video+1):
         #The file path should follow the naming convention of the saved videos.
         file = "video" + str(i)
@@ -84,5 +86,6 @@ def main(start_video=1, end_video=40, file_name="keywords.txt"):
                 file.write(f"{kw} {cumulative_kw_frequency[kw]}\n")
 
 if __name__ == "__main__":
-    main(1,20)
+    main()
+    main(1,20,"keywords1.txt")
     main(21,40,"keywords2.txt")
