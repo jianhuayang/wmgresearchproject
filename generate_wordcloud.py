@@ -16,7 +16,7 @@ def keywords_generate(file_name,output_file):
 
     kw_dict = dict(zip(keywords, frequencies))
 
-    wc = WordCloud(width=800, height=500, background_color="white", colormap="rainbow")
+    wc = WordCloud(width= 600, height=300, max_words=20, background_color="white", colormap="rainbow")
     wc.generate_from_frequencies(kw_dict)
     wc.to_file(output_file)
 
@@ -25,11 +25,10 @@ def difference_generate(file_name, output_file):
         words = file.read().split()
 
     words_string = " ".join(words)
-    wc = WordCloud(width=800, height=500, max_font_size=125, background_color="white", colormap="rainbow")
+    wc = WordCloud(width=600, height=300, stopwords=None, max_font_size=100, background_color="white", colormap="rainbow")
     wc.generate(words_string)
     wc.to_file(output_file)
 
 if __name__ == "__main__":
-    keywords_generate("keywords.txt","set1.png")
-    keywords_generate("keywords2.txt","set2.png")
+    keywords_generate("keywords.txt","keywords.png")
     difference_generate("difference.txt", "difference.png")
