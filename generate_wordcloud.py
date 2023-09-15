@@ -1,4 +1,5 @@
 from wordcloud import WordCloud
+from collections import Counter
 
 def keywords_generate(file_name,output_file):
     keywords = []
@@ -16,17 +17,17 @@ def keywords_generate(file_name,output_file):
 
     kw_dict = dict(zip(keywords, frequencies))
 
-    wc = WordCloud(width= 600, height=300, max_words=20, background_color="white", colormap="rainbow")
+    wc = WordCloud(width= 700, height=400, max_words=15, background_color="white", colormap="gist_rainbow")
     wc.generate_from_frequencies(kw_dict)
     wc.to_file(output_file)
 
 def difference_generate(file_name, output_file):
     with open(file_name, "r") as file:
-        words = file.read().split()
+        words = file.read().split("\n")
 
-    words_string = " ".join(words)
-    wc = WordCloud(width=600, height=300, stopwords=None, max_font_size=100, background_color="white", colormap="rainbow")
-    wc.generate(words_string)
+    words_dict = Counter(words)
+    wc = WordCloud(width=700, height=400, max_font_size=65, background_color="white", colormap="gist_rainbow")
+    wc.generate_from_frequencies(words_dict)
     wc.to_file(output_file)
 
 if __name__ == "__main__":
