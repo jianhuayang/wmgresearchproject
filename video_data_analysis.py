@@ -91,9 +91,6 @@ def video_style_plot():
     #Group the dataframe by video style and subtitle type, recording the number of videos per video style per subtitle type.
     style_count_df = df.groupby(["Video Style", "Subtitles"]).agg({"Video": "count"}).reset_index()
 
-    style_count2_df = df.groupby(["Video Style", "Subtitles"]).agg({"Video": "count", "Likes": "sum"}).reset_index()
-    print(style_count2_df.head(10))
-
     #Pivot the dataframe to ensure that it is in a format suitable for plotting.
     pivot_df = style_count_df.pivot(index="Video Style", columns="Subtitles", values="Video").reset_index().fillna(0)
     pivot_df = pivot_df[pivot_df.columns[::-1]] #Reverse the column order.
@@ -162,5 +159,6 @@ if __name__ == "__main__":
     content_type_plots()
     video_style_plot()
     video_scenes_plot()
+    
     # Display the subplots
     plt.show()
