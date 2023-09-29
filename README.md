@@ -1,19 +1,22 @@
-**This repository contains the code and files pertaining to my WMG Research Project.**
+**This repository contains all the code and files relating to my research project supported by Warwick Manufacturing Group (WMG).**
 
-The overall aim of the project was to investigate what VR content on TikTok can be used for educational purposes.
+The overall aim of the project was to investigate the key factors affecting the popularity of VR-related educational videos on TikTok.
 
-Using specific search terms (e.g. *virtual reality learning*), relevant videos were downloaded from TikTok.
+The speech and video content of videos within the dataset was analysed in order to identify certain trends.
 
-Their content was categorised and a text analysis pipeline was implemented using dedicated Python libraries.
-* The speech in the video was transcribed and saved in a text file.
-* The most important words were identified using keyword extraction.
+Relevant videos were identified using general keyword search terms (e.g. *virtual reality learning*).
+
+The text analysis pipeline for each video included the following stages:
+* Video Transcription (using the *pydub* and *speech_recognition* libraries)
+* Punctuation Restoration (using the *rpunct* library)
+* Keyword Extraction (using the *yake* library)
+
+Wordclouds were then generated from the extracted keywords as a data visualisation technique.
+
+Furthermore, the transitions in each video were analysed in order to record the number of distinct scenes and calculate the average scene length (this was done using the *pyscenedetect* library).
+
+Statistical analysis was then performed on all the recorded data using *pandas* and *numpy*, after which the results were plotted using *matplotlib*.
 
 Note that the video in the downloads folder is simply a placeholder - please contact me (**samaksh.agarwal@warwick.ac.uk**) if you would like the complete dataset.
 
-Here is a list of the required libraries required for the code to run:
-* pydub (*FFmpeg also required*)
-* speech_recognition
-* spaCy
-* yake
-
-FFmpeg can be downloaded here: https://ffmpeg.org/download.html
+FFmpeg (required for video transcription) can be downloaded here: https://ffmpeg.org/download.html
